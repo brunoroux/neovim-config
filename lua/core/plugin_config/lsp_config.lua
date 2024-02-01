@@ -1,6 +1,6 @@
 require("mason").setup()
 require("mason-lspconfig").setup({
-    ensure_installed = { "lua_ls" , "snyk_ls", "bashls", "dockerls", "docker_compose_language_service", "eslint", "gopls", "helm_ls", "jsonls", "tsserver", "intelephense", "jedi_language_server", "rust_analyzer", "terraformls"},
+    ensure_installed = { "lua_ls" , "bashls", "dockerls", "docker_compose_language_service", "eslint", "gopls", "helm_ls", "jsonls", "tsserver", "intelephense", "jedi_language_server", "rust_analyzer", "terraformls"},
     automatic_installation = true,
 })
 
@@ -17,11 +17,6 @@ end
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 require("lspconfig").lua_ls.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-}
-
-require("lspconfig").snyk_ls.setup {
     on_attach = on_attach,
     capabilities = capabilities,
 }
