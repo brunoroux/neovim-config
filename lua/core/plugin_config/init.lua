@@ -6,4 +6,5 @@ require("core.plugin_config.lsp_config")
 require("core.plugin_config.completions")
 require("core.plugin_config.indent-blankline")
 require("core.plugin_config.whichkey")
+require("core.plugin_config.lazygit")
 
