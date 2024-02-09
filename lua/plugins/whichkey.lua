@@ -13,6 +13,15 @@ return {
               f = {
                 name = "file", -- optional group name
               },
+              c = {
+                name = "code",
+              },
+              b = {
+                name = "buffers",
+              },
+              g = {
+                name = "git",
+              },
             }, { prefix = "<leader>" })
         end
     }
