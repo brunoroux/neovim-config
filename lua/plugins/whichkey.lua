@@ -6,6 +6,14 @@ return {
             vim.o.timeout = true
             vim.o.timeoutlen = 300
         end,
-        opts = { }
+        opts = { },
+        config = function()
+            local wk = require("which-key")
+            wk.register({
+              f = {
+                name = "file", -- optional group name
+              },
+            }, { prefix = "<leader>" })
+        end
     }
 }
