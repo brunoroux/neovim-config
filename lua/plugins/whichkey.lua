@@ -22,6 +22,9 @@ return {
               g = {
                 name = "git",
               },
+              d = {
+                name = "debugger"
+              }
             }, { prefix = "<leader>" })
         end
     }
