@@ -24,10 +24,12 @@ return {
                 vim.keymap.set('n', '<leader>bn', vim.lsp.buf.rename, { desc = 'rename' })
                 vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = 'code actions' })
 
-                vim.keymap.set('n', 'cd', vim.lsp.buf.definition, { desc = 'Goto Definition' })
-                vim.keymap.set('n', 'ci', vim.lsp.buf.implementation, { desc = 'Goto Implementation' })
-                vim.keymap.set('n', 'cr', require('telescope.builtin').lsp_references, { desc = 'List References' })
-                vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
+                vim.keymap.set('n', '<leader>cd', vim.lsp.buf.definition, { desc = 'Goto Definition' })
+                vim.keymap.set('n', '<leader>ci', vim.lsp.buf.implementation, { desc = 'Goto Implementation' })
+                vim.keymap.set('n', '<leader>cr', require('telescope.builtin').lsp_references, { desc = 'List References' })
+                vim.keymap.set('n', '<leader>cK', vim.lsp.buf.hover, {})
+                vim.keymap.set('n', '<leader>cr', vim.lsp.buf.references, { desc = 'References' })
+                vim.keymap.set('n', '<leader>cs', vim.lsp.bug.signature_help(), { desc = 'Signature help' })
             end
 
             local capabilities = require('cmp_nvim_lsp').default_capabilities()
