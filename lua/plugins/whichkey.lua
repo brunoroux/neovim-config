@@ -9,23 +9,15 @@ return {
         opts = { },
         config = function()
             local wk = require("which-key")
-            wk.register({
-              f = {
-                name = "file", -- optional group name
-              },
-              c = {
-                name = "code",
-              },
-              b = {
-                name = "buffers",
-              },
-              g = {
-                name = "git",
-              },
-              d = {
-                name = "debugger"
-              }
-            }, { prefix = "<leader>" })
+            wk.add({
+                { "<leader>b", group = "buffers" },
+                { "<leader>c", group = "code" },
+                { "<leader>d", group = "debugger" },
+                { "<leader>f", group = "file" },
+                { "<leader>g", group = "git" },
+                { "<leader>S", group = "Spectre" },
+
+            })
         end
     }
 }

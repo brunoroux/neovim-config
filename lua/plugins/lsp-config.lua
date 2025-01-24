@@ -11,7 +11,7 @@ return {
         lazy = false,
         config = function()
             require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "bashls", "dockerls", "docker_compose_language_service", "eslint", "jsonls", "tsserver", "intelephense" },
+                ensure_installed = { "lua_ls", "bashls", "dockerls", "docker_compose_language_service", "eslint", "jsonls", "ts_ls", "intelephense", "gopls" },
                 automatic_installation = true,
             })
         end
@@ -29,7 +29,7 @@ return {
                 vim.keymap.set('n', '<leader>cr', require('telescope.builtin').lsp_references, { desc = 'List References' })
                 vim.keymap.set('n', '<leader>cK', vim.lsp.buf.hover, {})
                 vim.keymap.set('n', '<leader>cr', vim.lsp.buf.references, { desc = 'References' })
-                vim.keymap.set('n', '<leader>cs', vim.lsp.bug.signature_help(), { desc = 'Signature help' })
+                -- vim.keymap.set('n', '<leader>cs', vim.lsp.bug.signature_help(), { desc = 'Signature help' })
             end
 
             local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -58,11 +58,15 @@ return {
                 on_attach = on_attach,
                 capabilities = capabilities,
             }
-            require("lspconfig").tsserver.setup {
+            require("lspconfig").ts_ls.setup {
                 on_attach = on_attach,
                 capabilities = capabilities,
             }
             require("lspconfig").intelephense.setup {
+                on_attach = on_attach,
+                capabilities = capabilities,
+            }
+            require("lspconfig").gopls.setup {
                 on_attach = on_attach,
                 capabilities = capabilities,
             }
@@ -77,13 +81,11 @@ return {
         lazy = false,
         config = function()
             vim.keymap.set('n', '<F5>', function() require('dap').continue() end)
-            vim.keymap.set('n', '<F10>', function() require('dap').step_over() end)
-            vim.keymap.set('n', '<F11>', function() require('dap').step_into() end)
-            vim.keymap.set('n', '<F12>', function() require('dap').step_out() end)
+            vim.keymap.set('n', '<F6>', function() require('dap').step_over() end)
+            vim.keymap.set('n', '<F7>', function() require('dap').step_into() end)
+            vim.keymap.set('n', '<F8>', function() require('dap').step_out() end)
             vim.keymap.set('n', '<Leader>db', function() require('dap').toggle_breakpoint() end, { desc = "Toogle breakpoint" })
             vim.keymap.set('n', '<Leader>dB', function() require('dap').set_breakpoint() end, { desc = "Set breakpoint" })
-            vim.keymap.set('n', '<Leader>dlp',
-                function() require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end, { desc = "Breakpoint log message" })
             vim.keymap.set('n', '<Leader>dr', function() require('dap').repl.open() end, { desc = "Open repl" })
             vim.keymap.set('n', '<Leader>dl', function() require('dap').run_last() end, { desc = "Run last" })
             vim.keymap.set({ 'n', 'v' }, '<Leader>dh', function()
