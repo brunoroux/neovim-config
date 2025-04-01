@@ -19,3 +19,5 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = "*",
   command = "%s/\\s\\+$//e"
 })
+
+vim.api.nvim_set_keymap('i', '<S-Tab>', '<C-V><Tab>', { noremap = true})
