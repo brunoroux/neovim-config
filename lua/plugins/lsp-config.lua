@@ -29,6 +29,9 @@ return {
                 vim.keymap.set('n', '<leader>cr', require('telescope.builtin').lsp_references, { desc = 'List References' })
                 vim.keymap.set('n', '<leader>cK', vim.lsp.buf.hover, {})
                 vim.keymap.set('n', '<leader>cr', vim.lsp.buf.references, { desc = 'References' })
+                vim.keymap.set('n', '<leader>cs', function()
+                    vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+                end, { silent = true, noremap = true, desc = 'Toggle Diagnostics' })
                 -- vim.keymap.set('n', '<leader>cs', vim.lsp.bug.signature_help(), { desc = 'Signature help' })
             end
 
@@ -79,6 +82,16 @@ return {
                     },
                 },
             }
+            vim.diagnostic.config({
+                virtual_text = {
+                    prefix = '●', -- Could be '●', '▎', 'x'
+                    spacing = 4,
+                },
+                signs = true,
+                underline = false,
+                severity_sort = true,
+                update_in_insert = false,
+            })
         end
     },
     {
