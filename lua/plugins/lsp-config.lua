@@ -18,6 +18,7 @@ return {
     },
     {
         "neovim/nvim-lspconfig",
+        dependencies = { 'saghen/blink.cmp' },
         lazy = false,
         config = function()
             local on_attach = function(_, _)
@@ -35,7 +36,7 @@ return {
                 -- vim.keymap.set('n', '<leader>cs', vim.lsp.bug.signature_help(), { desc = 'Signature help' })
             end
 
-            local capabilities = require('cmp_nvim_lsp').default_capabilities()
+            local capabilities = require('blink.cmp').get_lsp_capabilities()
 
             require("lspconfig").lua_ls.setup {
                 on_attach = on_attach,
