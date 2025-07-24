@@ -10,10 +10,7 @@ return {
         "williamboman/mason-lspconfig.nvim",
         lazy = false,
         config = function()
-            require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "bashls", "dockerls", "docker_compose_language_service", "eslint", "jsonls", "ts_ls", "intelephense", "gopls" },
-                automatic_installation = true,
-            })
+            require("mason-lspconfig").setup()
         end
     },
     {
